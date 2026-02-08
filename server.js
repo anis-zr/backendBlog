@@ -16,12 +16,29 @@ const targettRoutes= require("./routes/targettRoutes")
 const app = express();
 
 
-
+/*
 app.use(cors({
     origin:"http://agritech-ten-eta.vercel.app",
     methods: ["GET","POST","PUT","DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials:true,
+}));*/
+const allowedOrigins = [
+  "http://localhost:5173", // dev local
+  "https://agritech-ten-eta.vercel.app", // production
+  "https://agritech-dt723tftg-aniszerouali40-2871s-projects.vercel.app", // preview deploy
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // لو origin فارغ (Postman مثلاً) نسمح
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS blocked"));
+    }
+  },
+  credentials: true,
 }));
 app.use(express.json());
 
