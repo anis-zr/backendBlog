@@ -16,13 +16,14 @@ const targettRoutes= require("./routes/targettRoutes")
 const app = express();
 
 
-/*
+
 app.use(cors({
     origin:"http://agritech-ten-eta.vercel.app",
     methods: ["GET","POST","PUT","DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials:true,
-}));*/
+}));
+/*
 const allowedOrigins = [
   "http://localhost:5173", // dev local
   "https://agritech-ten-eta.vercel.app", // production
@@ -39,7 +40,7 @@ app.use(cors({
     }
   },
   credentials: true,
-}));
+}));*/
 app.use(express.json());
 
 connectDB();
